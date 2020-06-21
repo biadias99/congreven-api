@@ -20,6 +20,7 @@ Route.on('/').render('welcome')
 
 Route.group(() => {
   Route.post('login', 'UserController.login')
+  Route.get('logout', 'UserController.logout').middleware('auth')
 }).prefix('user');
 
 Route.post('users', 'UserController.register').validator('User')
