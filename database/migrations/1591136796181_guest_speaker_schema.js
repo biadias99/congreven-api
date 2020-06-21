@@ -10,6 +10,7 @@ class GuestSpeakerSchema extends Schema {
       table.string('name', 80).notNullable()
       table.integer('age', 80).notNullable()
       table.string('scholarity', 30).notNullable()
+      table.timestamps()
     })
   }
 

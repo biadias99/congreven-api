@@ -9,6 +9,7 @@ class SubscribeSchema extends Schema {
       table.string('cpf_user', 11).notNullable().references('cpf').inTable('users')
       table.integer('event_id').references('id').inTable('events').unsigned()
       table.primary(['cpf_user', 'event_id'])
+      table.timestamps()
     })
   }
 

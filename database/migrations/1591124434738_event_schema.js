@@ -14,6 +14,7 @@ class EventSchema extends Schema {
       table.string('description', 100).notNullable()
       table.string('cpf_owner', 11).notNullable().references('cpf').inTable('users')
       table.string('owner_description', 100).notNullable()
+      table.timestamps()
     })
   }
 

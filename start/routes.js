@@ -17,3 +17,11 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+Route.group(() => {
+  Route.post('login', 'UserController.login')
+}).prefix('user');
+
+Route.post('users', 'UserController.register').validator('User')
+
+

@@ -9,6 +9,7 @@ class SupportSchema extends Schema {
       table.integer('event_id').references('id').inTable('events').unsigned()
       table.string('cnpj_organizer').references('cnpj').inTable('organizers').notNullable()
       table.primary(['event_id', 'cnpj_organizer'])
+      table.timestamps()
     })
   }
 

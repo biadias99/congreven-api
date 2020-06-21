@@ -12,6 +12,7 @@ class ActivitySchema extends Schema {
       table.time('start_hour').notNullable()
       table.time('end_hour').notNullable()
       table.integer('event_id').unsigned().references('id').inTable('events')
+      table.timestamps()
     })
   }
 

@@ -9,6 +9,7 @@ class SpeakSchema extends Schema {
       table.string('rg_guest_speaker').references('rg').inTable('guest_speakers')
       table.integer('id_activity').references('id').inTable('activities').unsigned()
       table.primary(['rg_guest_speaker', 'id_activity'])
+      table.timestamps()
     })
   }
 

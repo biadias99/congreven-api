@@ -9,6 +9,7 @@ class OrganizerSchema extends Schema {
       table.string('name', 80).notNullable()
       table.string('cnpj', 14).unique().primary().notNullable()
       table.string('description', 100).notNullable()
+      table.timestamps()
     })
   }
 

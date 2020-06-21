@@ -11,6 +11,7 @@ class NewSchema extends Schema {
       table.date('date_event').notNullable()
       table.integer('event_id').unsigned().references('id').inTable('events')
       table.primary(['name', 'date_event', 'event_id'])
+      table.timestamps()
     })
   }
 
