@@ -19,7 +19,7 @@ class User {
     return {
       "name.required": "O nome é um campo obrigatório",
       "name.min": "O nome precisa ter no mínimo 3 caracteres",
-      "name.max": "O nome precisa ter no máximo 50 caracteres",
+      "name.max": "O nome precisa ter no máximo 80 caracteres",
       "cpf.required": "O cpf é um campo obrigatório",
       "cpf.unique": "CPF já cadastrado",
       "email.required": "O e-mail é um campo obrigatório",

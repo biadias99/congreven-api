@@ -27,5 +27,6 @@ Route.post('users', 'UserController.register').validator('User')
 Route.put('users/:cpf', 'UserController.update').validator('UserUpdate')
 // .middleware('auth')
 
+Route.post('events', 'EventController.create').validator('Event')
 
 
