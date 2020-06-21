@@ -23,5 +23,8 @@ Route.group(() => {
 }).prefix('user');
 
 Route.post('users', 'UserController.register').validator('User')
+Route.put('users/:cpf', 'UserController.update').validator('UserUpdate')
+// .middleware('auth')
+
 
 
