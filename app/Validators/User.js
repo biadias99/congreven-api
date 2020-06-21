@@ -9,7 +9,7 @@ class User {
     return {
       // validation rules
       name: 'required|min:3|max:80',
-      cpf: 'unique:users',
+      cpf: 'unique:users|cpfValid',
       email: 'required|email|unique:users',
       password: 'required|min:6',
     }
