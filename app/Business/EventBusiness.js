@@ -19,6 +19,45 @@ class EventBusiness {
       throw new Error(error)
     }
   }
+
+  async getById(id) {
+    try {
+      const event = await Event.findBy('id', id)
+      return event
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  async update(id, data, event) {
+    try {
+        event.merge({
+          name: data.name,
+          address: data.address,
+          start_date: moment(data.start_date, 'YYYY-MM-DD').toDate(),
+          end_date: moment(data.end_date, 'YYYY-MM-DD').toDate(),
+          description: data.description,
+          owner_description: data.owner_description
+        })
+
+        await event.save()
+
+        const newEvent = await Event.findBy('id', id)
+
+        return newEvent
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  async delete(event) {
+    try {
+      await event.delete()
+      return
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
 
 module.exports = EventBusiness;

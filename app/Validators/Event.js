@@ -13,8 +13,7 @@ class Event {
       start_date: 'required',
       end_date: 'required',
       description: 'required|min:10|max:100',
-      cpf_owner: 'required|cpfValid',
-      owner_description: 'required|min:10|max:100'
+      cpf_owner: 'required|cpfValid'
     }
   }
 
@@ -32,9 +31,6 @@ class Event {
       "description.min": "A descrição precisa ter no mínimo 10 caracteres",
       "description.max": "A descrição precisa ter no máximo 100 caracteres",
       "cpf.required": "O cpf é um campo obrigatório",
-      "owner_description.required": "A descrição do idealizador é um campo obrigatório",
-      "owner_description.min": "A descrição do idealizador precisa ter no mínimo 10 caracteres",
-      "owner_description.max": "A descrição do idealizador precisa ter no máximo 100 caracteres",
     }
   }
 

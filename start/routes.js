@@ -24,9 +24,10 @@ Route.group(() => {
 }).prefix('user');
 
 Route.post('users', 'UserController.register').validator('User')
-Route.put('users/:cpf', 'UserController.update').validator('UserUpdate')
-// .middleware('auth')
+Route.put('users/:cpf', 'UserController.update').validator('UserUpdate').middleware('auth')
 
-Route.post('events', 'EventController.create').validator('Event')
+Route.post('events', 'EventController.create').validator('Event').middleware('auth')
+Route.put('events/:id', 'EventController.update').validator('Event').middleware('auth')
+Route.delete('events/:id', 'EventController.delete').middleware('auth')
 
 

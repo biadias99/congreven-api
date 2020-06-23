@@ -13,7 +13,7 @@ class EventSchema extends Schema {
       table.datetime('end_date').notNullable()
       table.string('description', 100).notNullable()
       table.string('cpf_owner', 11).notNullable().references('cpf').inTable('users')
-      table.string('owner_description', 100).notNullable()
+      table.string('owner_description', 100)
       table.timestamps()
     })
   }

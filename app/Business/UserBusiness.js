@@ -41,7 +41,6 @@ class UserBusiness {
     }
   }
 
-
 }
 
 module.exports = UserBusiness;
