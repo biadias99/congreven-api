@@ -1,6 +1,5 @@
 const Event = use('App/Models/Event')
 const moment = use('moment')
-
 class EventBusiness {
   async create(data) {
     try {
