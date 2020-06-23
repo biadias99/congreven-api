@@ -71,6 +71,19 @@ class EventController {
       return
     }
   }
+
+  async get({ response }) {
+    try {
+      const events = await this.eventBusiness.get()
+
+      return events
+    } catch (error) {
+      response.status(400).send({
+        message: 'Erro ao buscar eventos: ' + error
+      })
+      return;
+    }
+  }
 }
 
 module.exports = EventController

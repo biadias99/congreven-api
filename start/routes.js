@@ -29,5 +29,6 @@ Route.put('users/:cpf', 'UserController.update').validator('UserUpdate').middlew
 Route.post('events', 'EventController.create').validator('Event').middleware('auth')
 Route.put('events/:id', 'EventController.update').validator('Event').middleware('auth')
 Route.delete('events/:id', 'EventController.delete').middleware('auth')
+Route.get('events', 'EventController.get').middleware('auth')
 
 

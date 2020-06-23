@@ -58,6 +58,15 @@ class EventBusiness {
       throw new Error(error)
     }
   }
+
+  async get() {
+    try {
+      const events = await Event.all()
+      return events
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
 
 module.exports = EventBusiness;
