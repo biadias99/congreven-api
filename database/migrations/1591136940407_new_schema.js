@@ -8,9 +8,9 @@ class NewSchema extends Schema {
     this.create('news', (table) => {
       table.string('name', 80).notNullable()
       table.string('description', 100).notNullable()
-      table.date('date_event').notNullable()
+      table.date('ndate').notNullable()
       table.integer('event_id').unsigned().references('id').inTable('events')
-      table.primary(['name', 'date_event', 'event_id'])
+      table.primary(['name', 'ndate', 'event_id'])
       table.timestamps()
     })
   }
