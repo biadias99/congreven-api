@@ -1,4 +1,5 @@
 const Support = use('App/Models/Support')
+const Database = use('Database')
 
 class SupportBusiness {
   async create(data) {
@@ -9,6 +10,31 @@ class SupportBusiness {
       })
 
       return support
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  async getByPk(data) {
+    try {
+      const support = await Support
+                          .query()
+                          .where('event_id', data.event_id)
+                          .where('cnpj_organizer', data.cnpj_organizer)
+                          .first()
+
+      return support
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  async delete(news) {
+    try {
+      await Database
+          .raw('delete from supports where event_id = ? and cnpj_organizer = ?',
+          [news.event_id, news.cnpj_organizer])
+      return
     } catch (error) {
       throw new Error(error)
     }

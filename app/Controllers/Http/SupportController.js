@@ -24,6 +24,30 @@ class SupportController {
     }
   }
 
+  async delete({ request, response }) {
+    const data = request.all()
+    const support = await this.supportBusiness.getByPk(data)
+
+    if (support) {
+      try {
+        await this.supportBusiness.delete(support)
+
+        response.send({
+          message: 'Vinculação excluída com sucesso.'
+        })
+      } catch (error) {
+        response.status(400).send({
+          message: 'Erro ao excluir a vinculação:' + error
+        })
+        return
+      }
+    } else {
+      response.status(400).send({
+        message: 'Vinculação não encontrada na base de dados.'
+      })
+      return
+    }
+  }
 }
 
 module.exports = SupportController

@@ -46,3 +46,4 @@ Route.post('news', 'NewsController.create').validator('News').middleware('auth')
 Route.delete('news', 'NewsController.delete').validator('News').middleware('auth')
 
 Route.post('supports', 'SupportController.create').validator('Support').middleware('auth')
+Route.delete('supports', 'SupportController.delete').validator('Support').middleware('auth')
