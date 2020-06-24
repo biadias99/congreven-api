@@ -44,3 +44,5 @@ Route.put('guestspeakers/:rg', 'GuestSpeakerController.update').validator('Guest
 Route.post('news', 'NewsController.create').validator('News').middleware('auth')
 // Route.put('news', 'NewsController.update').validator('News').middleware('auth')
 Route.delete('news', 'NewsController.delete').validator('News').middleware('auth')
+
+Route.post('supports', 'SupportController.create').validator('Support').middleware('auth')
