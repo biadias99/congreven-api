@@ -1,10 +1,10 @@
-const New = use('App/Models/New')
+const News = use('App/Models/News')
 const moment = use('moment')
 
-class NewBusiness {
+class NewsBusiness {
   async create(data) {
     try {
-      const news = await New.create({
+      const news = await News.create({
         name: data.name,
         description: data.description,
         ndate: moment(data.ndate, 'YYYY-MM-DD').toDate(),
@@ -18,4 +18,4 @@ class NewBusiness {
   }
 }
 
-module.exports = NewBusiness;
+module.exports = NewsBusiness;

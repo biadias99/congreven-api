@@ -1,6 +1,6 @@
 'use strict'
 
-class New {
+class News {
   get validateAll() {
     return true;
   }
@@ -35,4 +35,4 @@ class New {
   }
 }
 
-module.exports = New
+module.exports = News

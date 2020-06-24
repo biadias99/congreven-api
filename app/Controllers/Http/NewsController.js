@@ -1,17 +1,17 @@
 'use strict'
 
-const NewBusiness = use('App/Business/NewBusiness')
+const NewsBusiness = use('App/Business/NewsBusiness')
 
-class NewController {
+class NewsController {
   constructor() {
-    this.newBusiness = new NewBusiness();
+    this.newsBusiness = new NewsBusiness();
   }
 
   async create({ request, response }) {
     const data = request.all()
 
     try {
-      await this.newBusiness.create(data)
+      await this.newsBusiness.create(data)
 
       response.send({
         message: 'Notícia cadastrada com sucesso.'
@@ -25,4 +25,4 @@ class NewController {
   }
 }
 
-module.exports = NewController
+module.exports = NewsController
