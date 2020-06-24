@@ -8,7 +8,7 @@ class GuestSpeakerSchema extends Schema {
     this.create('guest_speakers', (table) => {
       table.string('rg', 9).unique().primary()
       table.string('name', 80).notNullable()
-      table.integer('age', 80).notNullable()
+      table.date('bdate', 80).notNullable()
       table.string('scholarity', 30).notNullable()
       table.timestamps()
     })

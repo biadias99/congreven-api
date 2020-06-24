@@ -37,3 +37,5 @@ Route.delete('activities/:id', 'ActivityController.delete').middleware('auth')
 
 Route.post('organizers', 'OrganizerController.create').validator('Organizer').middleware('auth')
 Route.put('organizers/:cnpj', 'OrganizerController.update').validator('OrganizerUpdate').middleware('auth')
+
+Route.post('guestspeakers', 'GuestSpeakerController.create').validator('GuestSpeaker').middleware('auth')

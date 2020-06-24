@@ -8,7 +8,7 @@ class Organizer {
   get rules() {
     return {
       // validation rules
-      name: 'required|min:3|max:50',
+      name: 'required|min:3|max:80',
       cnpj: 'required|unique:organizers|cnpjValid',
       description: 'required|min:10|max:100'
     }
