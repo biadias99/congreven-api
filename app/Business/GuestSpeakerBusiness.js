@@ -17,6 +17,33 @@ class GuestSpeakerBusiness {
     }
   }
 
+  async getByRg(rg) {
+    try {
+      const guestSpeaker = await GuestSpeaker.findBy('rg', rg)
+      return guestSpeaker
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  async update(rg, data, guestSpeaker) {
+    try {
+        guestSpeaker.merge({
+          name: data.name,
+          scholarity: data.scholarity,
+          bdate: moment(data.bdate, 'YYYY-MM-DD').toDate()
+        })
+
+        await guestSpeaker.save()
+
+        const newGuestSpeaker = await GuestSpeaker.findBy('rg', rg)
+
+        return newGuestSpeaker
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
 }
 
 module.exports = GuestSpeakerBusiness;

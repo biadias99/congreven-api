@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class GuestSpeaker extends Model {
+  static get primaryKey() {
+    return 'rg'
+  }
 }
 
 module.exports = GuestSpeaker

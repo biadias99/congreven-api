@@ -39,3 +39,4 @@ Route.post('organizers', 'OrganizerController.create').validator('Organizer').mi
 Route.put('organizers/:cnpj', 'OrganizerController.update').validator('OrganizerUpdate').middleware('auth')
 
 Route.post('guestspeakers', 'GuestSpeakerController.create').validator('GuestSpeaker').middleware('auth')
+Route.put('guestspeakers/:rg', 'GuestSpeakerController.update').validator('GuestSpeakerUpdate').middleware('auth')

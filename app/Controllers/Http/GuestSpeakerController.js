@@ -22,6 +22,30 @@ class GuestSpeakerController {
       return;
     }
   }
+
+  async update({ request, params, response }) {
+    const { rg } = params
+    const guestSpeaker = await this.guestSpeakerBusiness.getByRg(rg)
+    const data = request.all()
+
+    if (guestSpeaker) {
+      try {
+        const guestSpeakerUpdate = await this.guestSpeakerBusiness.update(rg, data, guestSpeaker)
+
+        return guestSpeakerUpdate
+      } catch (error) {
+        response.status(400).send({
+          message: 'Erro ao atualizar perfil do palestrante:' + error
+        })
+        return
+      }
+    } else {
+      response.status(400).send({
+        message: 'Palestrante não encontrado na base de dados.'
+      });
+      return
+    }
+  }
 }
 
 module.exports = GuestSpeakerController
