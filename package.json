@@ -27,6 +27,7 @@
     "@adonisjs/session": "^1.0.27",
     "@adonisjs/shield": "^1.0.8",
     "@adonisjs/validator": "^5.0.6",
+    "cnpj": "^3.1.0",
     "cpf": "^2.0.1",
     "moment": "^2.27.0",
     "mysql": "^2.18.1"

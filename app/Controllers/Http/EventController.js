@@ -47,7 +47,7 @@ class EventController {
     }
   }
 
-  async delete({ request, params, response }) {
+  async delete({ params, response }) {
     const { id } = params
     const event = await this.eventBusiness.getById(id)
 

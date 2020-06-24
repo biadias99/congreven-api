@@ -34,3 +34,5 @@ Route.get('events', 'EventController.get').middleware('auth')
 Route.post('activities', 'ActivityController.create').validator('Activity').middleware('auth')
 Route.put('activities/:id', 'ActivityController.update').validator('ActivityUpdate').middleware('auth')
 Route.delete('activities/:id', 'ActivityController.delete').middleware('auth')
+
+Route.post('organizers', 'OrganizerController.create').validator('Organizer').middleware('auth')
