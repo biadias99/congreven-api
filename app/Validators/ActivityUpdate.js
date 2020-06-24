@@ -1,6 +1,6 @@
 'use strict'
 
-class Activity {
+class ActivityUpdate {
   get validateAll() {
     return true;
   }
@@ -12,8 +12,7 @@ class Activity {
       period: 'required|min:3|max:30',
       date_activity: 'required',
       start_hour: 'required',
-      end_hour: 'required',
-      event_id: 'required'
+      end_hour: 'required'
     }
   }
 
@@ -27,8 +26,7 @@ class Activity {
       "period.max": "O período precisa ter no máximo 30 caracteres",
       "date_activity.required": "A data da atividade é um campo obrigatório",
       "start_hour.required": "O horário de início é um campo obrigatório",
-      "end_hour.required": "O horário de finalização é um campo obrigatório",
-      "event_id.required": "O evento vinculado a atividade é um campo obrigatório",
+      "end_hour.required": "O horário de finalização é um campo obrigatório"
     }
   }
 
@@ -39,4 +37,4 @@ class Activity {
   }
 }
 
-module.exports = Activity
+module.exports = ActivityUpdate

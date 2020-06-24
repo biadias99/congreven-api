@@ -7,6 +7,7 @@ class ActivitySchema extends Schema {
   up () {
     this.create('activities', (table) => {
       table.increments()
+      table.string('name', 50).notNullable()
       table.string('period', 30).notNullable()
       table.date('date_activity').notNullable()
       table.time('start_hour').notNullable()
