@@ -23,6 +23,31 @@ class SubscribeController {
       return;
     }
   }
+
+  async delete({ request, response }) {
+    const data = request.all()
+    const subscribe = await this.subscribeBusiness.getByPk(data)
+
+    if (subscribe) {
+      try {
+        await this.subscribeBusiness.delete(subscribe)
+
+        response.send({
+          message: 'Vinculação excluída com sucesso.'
+        })
+      } catch (error) {
+        response.status(400).send({
+          message: 'Erro ao excluir a vinculação:' + error
+        })
+        return
+      }
+    } else {
+      response.status(400).send({
+        message: 'Vinculação não encontrada na base de dados.'
+      })
+      return
+    }
+  }
 }
 
 module.exports = SubscribeController
