@@ -50,3 +50,5 @@ Route.delete('supports', 'SupportController.delete').validator('Support').middle
 
 Route.post('speaks', 'SpeakController.create').validator('Speak').middleware('auth')
 Route.delete('speaks', 'SpeakController.delete').validator('Speak').middleware('auth')
+
+Route.post('subscribes', 'SubscribeController.create').validator('Subscribe').middleware('auth')
