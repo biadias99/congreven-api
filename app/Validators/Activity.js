@@ -13,7 +13,7 @@ class Activity {
       date_activity: 'required',
       start_hour: 'required',
       end_hour: 'required',
-      event_id: 'required'
+      event_id: 'required|exists:events,id'
     }
   }
 
@@ -29,6 +29,7 @@ class Activity {
       "start_hour.required": "O horário de início é um campo obrigatório",
       "end_hour.required": "O horário de finalização é um campo obrigatório",
       "event_id.required": "O evento vinculado a atividade é um campo obrigatório",
+      "event_id.exists": "O evento não existe no banco de dados",
     }
   }
 

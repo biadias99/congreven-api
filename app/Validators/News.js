@@ -11,7 +11,7 @@ class News {
       name: 'required|min:5|max:80',
       description: 'required|min:10|max:100',
       ndate: 'required',
-      event_id: 'required'
+      event_id: 'required|exists:events,id'
     }
   }
 
@@ -25,6 +25,7 @@ class News {
       "description.max": "A descrição precisa ter no máximo 100 caracteres",
       "ndate.required": "A data da notícia é um campo obrigatório",
       "event_id.required": "O evento vinculado a notícia é um campo obrigatório",
+      "event_id.exists": "O evento não existe no banco de dados"
     }
   }
 
