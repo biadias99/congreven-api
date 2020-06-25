@@ -24,6 +24,31 @@ class SpeakController {
     }
   }
 
+  async delete({ request, response }) {
+    const data = request.all()
+    const speak = await this.speakBusiness.getByPk(data)
+
+    if (speak) {
+      try {
+        await this.speakBusiness.delete(speak)
+
+        response.send({
+          message: 'Vinculação excluída com sucesso.'
+        })
+      } catch (error) {
+        response.status(400).send({
+          message: 'Erro ao excluir a vinculação:' + error
+        })
+        return
+      }
+    } else {
+      response.status(400).send({
+        message: 'Vinculação não encontrada na base de dados.'
+      })
+      return
+    }
+  }
+
 }
 
 module.exports = SpeakController
