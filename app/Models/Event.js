@@ -4,7 +4,9 @@
 const Model = use('Model')
 
 class Event extends Model {
-
+  supports () {
+    return this.hasMany('App/Models/Support')
+  }
 }
 
 module.exports = Event

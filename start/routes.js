@@ -30,6 +30,7 @@ Route.post('events', 'EventController.create').validator('Event').middleware('au
 Route.put('events/:id', 'EventController.update').validator('Event').middleware('auth')
 Route.delete('events/:id', 'EventController.delete').middleware('auth')
 Route.get('events', 'EventController.get').middleware('auth')
+Route.get('events/:id', 'EventController.getById').middleware('auth')
 
 Route.post('activities', 'ActivityController.create').validator('Activity').middleware('auth')
 Route.put('activities/:id', 'ActivityController.update').validator('ActivityUpdate').middleware('auth')

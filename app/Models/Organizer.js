@@ -7,6 +7,9 @@ class Organizer extends Model {
   static get primaryKey() {
     return 'cnpj'
   }
+  supports () {
+    return this.hasMany('App/Models/Support')
+  }
 }
 
 module.exports = Organizer

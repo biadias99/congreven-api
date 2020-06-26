@@ -1,6 +1,13 @@
 const Event = use('App/Models/Event')
 const moment = use('moment')
+const Database = use ('Database')
+const OrganizerBusiness = use('App/Business/OrganizerBusiness')
+
 class EventBusiness {
+  constructor() {
+    this.organizerBusiness = new OrganizerBusiness();
+  }
+
   async create(data) {
     try {
       const event = await Event.create({
@@ -62,6 +69,21 @@ class EventBusiness {
     try {
       const events = await Event.all()
       return events
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  async getById(id) {
+    try {
+      const event = await Event.findBy('id', id)
+      const organizers = await this.organizerBusiness.getByEventId(id)
+      const eventWithOrganizers = {
+        event,
+        organizers: organizers[0]
+      }
+
+      return eventWithOrganizers
     } catch (error) {
       throw new Error(error)
     }

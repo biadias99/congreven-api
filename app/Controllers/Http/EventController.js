@@ -84,6 +84,26 @@ class EventController {
       return;
     }
   }
+
+  async getById({ response, params }) {
+    const { id } = params;
+
+    const event = await this.eventBusiness.getById(id);
+    try {
+        if (event) {
+          return event;
+        } else {
+            response.send({
+              message: 'Evento não encontrado na base de dados.'
+            });
+        }
+    } catch (error) {
+      response.status(400).send({
+        message: 'Erro ao buscar evento:' + error
+      })
+    }
+}
+
 }
 
 module.exports = EventController
