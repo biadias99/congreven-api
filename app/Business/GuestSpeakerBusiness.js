@@ -1,5 +1,6 @@
 const GuestSpeaker = use('App/Models/GuestSpeaker')
 const moment = use('moment')
+const Database = use('Database')
 
 class GuestSpeakerBusiness {
   async create(data) {
@@ -53,6 +54,16 @@ class GuestSpeakerBusiness {
     }
   }
 
+  async getByActivityId(activity_id) {
+    try {
+      const guestSpeakers = await Database
+      .raw('select gs.rg, gs.name from guest_speakers gs, speaks s where gs.rg = s.rg_guest_speaker and s.activity_id = ?',
+      [activity_id])
+      return guestSpeakers
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
 
 module.exports = GuestSpeakerBusiness;

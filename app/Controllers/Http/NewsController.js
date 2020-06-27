@@ -82,6 +82,25 @@ class NewsController {
       return
     }
   }
+
+  async getByEventId({ response, params }) {
+    const { id } = params;
+
+    const news = await this.newsBusiness.getByEventId(id);
+    try {
+        if (news.rows[0]) {
+          return news;
+        } else {
+            response.send({
+              message: 'Não existe nenhuma notícia vinculada a este evento.'
+            });
+        }
+    } catch (error) {
+      response.status(400).send({
+        message: 'Erro ao buscar notícia:' + error
+      })
+    }
+  }
 }
 
 module.exports = NewsController

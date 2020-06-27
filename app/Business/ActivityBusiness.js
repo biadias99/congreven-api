@@ -1,7 +1,11 @@
 const Activity = use('App/Models/Activity')
 const moment = use('moment')
-
+const GuestSpeakerBusiness = use('App/Business/GuestSpeakerBusiness')
 class ActivityBusiness {
+  constructor() {
+    this.guestSpeakerBusiness = new GuestSpeakerBusiness();
+  }
+
   async create(data) {
     try {
       const activity = await Activity.create({
@@ -22,7 +26,12 @@ class ActivityBusiness {
   async getById(id) {
     try {
       const activity = await Activity.findBy('id', id)
-      return activity
+      const guestSpeakers = await this.guestSpeakerBusiness.getByActivityId(id)
+      const activityWithGuestSpeakers = {
+        activity,
+        guestSpeakers: guestSpeakers[0]
+      }
+      return activityWithGuestSpeakers
     } catch (error) {
       throw new Error(error)
     }

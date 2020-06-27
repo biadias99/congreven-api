@@ -95,12 +95,13 @@ class ActivityController {
     const { id } = params;
 
     const activity = await this.activityBusiness.getByEventId(id);
+
     try {
-        if (activity) {
+        if (activity.rows[0]) {
           return activity;
         } else {
             response.send({
-              message: 'Atividade não encontrada na base de dados.'
+              message: 'Não existe nenhuma atividade vinculada a este evento.'
             });
         }
     } catch (error) {

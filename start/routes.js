@@ -50,6 +50,7 @@ Route.get('guestspeakers/:rg', 'GuestSpeakerController.getByRg').middleware('aut
 Route.post('news', 'NewsController.create').validator('News').middleware('auth')
 // Route.put('news', 'NewsController.update').validator('News').middleware('auth')
 Route.delete('news', 'NewsController.delete').validator('News').middleware('auth')
+Route.get('events/news/:id', 'NewsController.getByEventId').middleware('auth')
 
 Route.post('supports', 'SupportController.create').validator('Support').middleware('auth')
 Route.delete('supports', 'SupportController.delete').validator('Support').middleware('auth')

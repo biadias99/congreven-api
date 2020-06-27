@@ -65,6 +65,15 @@ class NewsBusiness {
       throw new Error(error)
     }
   }
+
+  async getByEventId(event_id) {
+    try {
+      const news = await News.query().where('event_id', event_id).fetch()
+      return news
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
 
 module.exports = NewsBusiness;
