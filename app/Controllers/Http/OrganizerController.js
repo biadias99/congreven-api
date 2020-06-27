@@ -47,6 +47,19 @@ class OrganizerController {
       return
     }
   }
+
+  async get({ response }) {
+    try {
+      const organizers = await this.organizerBusiness.get()
+
+      return organizers
+    } catch (error) {
+      response.status(400).send({
+        message: 'Erro ao buscar organizadores: ' + error
+      })
+      return;
+    }
+  }
 }
 
 module.exports = OrganizerController

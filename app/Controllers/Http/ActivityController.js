@@ -72,6 +72,44 @@ class ActivityController {
     }
   }
 
+  async getById({ response, params }) {
+    const { id } = params;
+
+    const activity = await this.activityBusiness.getById(id);
+    try {
+        if (activity) {
+          return activity;
+        } else {
+            response.send({
+              message: 'Atividade não encontrada na base de dados.'
+            });
+        }
+    } catch (error) {
+      response.status(400).send({
+        message: 'Erro ao buscar atividade:' + error
+      })
+    }
+  }
+
+  async getByEventId({ response, params }) {
+    const { id } = params;
+
+    const activity = await this.activityBusiness.getByEventId(id);
+    try {
+        if (activity) {
+          return activity;
+        } else {
+            response.send({
+              message: 'Atividade não encontrada na base de dados.'
+            });
+        }
+    } catch (error) {
+      response.status(400).send({
+        message: 'Erro ao buscar atividade:' + error
+      })
+    }
+  }
+
 }
 
 module.exports = ActivityController

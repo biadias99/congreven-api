@@ -46,6 +46,38 @@ class GuestSpeakerController {
       return
     }
   }
+
+  async get({ response }) {
+    try {
+      const guestSpeaker = await this.guestSpeakerBusiness.get()
+
+      return guestSpeaker
+    } catch (error) {
+      response.status(400).send({
+        message: 'Erro ao buscar palestrantes: ' + error
+      })
+      return;
+    }
+  }
+
+  async getByRg({ response, params }) {
+    const { rg } = params;
+
+    const guestSpeaker = await this.guestSpeakerBusiness.getByRg(rg);
+    try {
+        if (guestSpeaker) {
+          return guestSpeaker;
+        } else {
+            response.send({
+              message: 'Palestrante não encontrado na base de dados.'
+            });
+        }
+    } catch (error) {
+      response.status(400).send({
+        message: 'Erro ao buscar palestrante:' + error
+      })
+    }
+  }
 }
 
 module.exports = GuestSpeakerController

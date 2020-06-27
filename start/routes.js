@@ -35,12 +35,17 @@ Route.get('events/:id', 'EventController.getById').middleware('auth')
 Route.post('activities', 'ActivityController.create').validator('Activity').middleware('auth')
 Route.put('activities/:id', 'ActivityController.update').validator('ActivityUpdate').middleware('auth')
 Route.delete('activities/:id', 'ActivityController.delete').middleware('auth')
+Route.get('activities/:id', 'ActivityController.getById').middleware('auth')
+Route.get('events/activities/:id', 'ActivityController.getByEventId').middleware('auth')
 
 Route.post('organizers', 'OrganizerController.create').validator('Organizer').middleware('auth')
 Route.put('organizers/:cnpj', 'OrganizerController.update').validator('OrganizerUpdate').middleware('auth')
+Route.get('organizers', 'OrganizerController.get').middleware('auth')
 
 Route.post('guestspeakers', 'GuestSpeakerController.create').validator('GuestSpeaker').middleware('auth')
 Route.put('guestspeakers/:rg', 'GuestSpeakerController.update').validator('GuestSpeakerUpdate').middleware('auth')
+Route.get('guestspeakers', 'GuestSpeakerController.get').middleware('auth')
+Route.get('guestspeakers/:rg', 'GuestSpeakerController.getByRg').middleware('auth')
 
 Route.post('news', 'NewsController.create').validator('News').middleware('auth')
 // Route.put('news', 'NewsController.update').validator('News').middleware('auth')

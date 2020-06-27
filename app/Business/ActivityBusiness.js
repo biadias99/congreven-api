@@ -56,6 +56,15 @@ class ActivityBusiness {
       throw new Error(error)
     }
   }
+
+  async getByEventId(event_id) {
+    try {
+      const activity = await Activity.query().where('event_id', event_id).fetch()
+      return activity
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
 
 module.exports = ActivityBusiness;

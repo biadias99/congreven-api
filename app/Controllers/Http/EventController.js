@@ -102,7 +102,7 @@ class EventController {
         message: 'Erro ao buscar evento:' + error
       })
     }
-}
+  }
 
 }
 

@@ -17,6 +17,15 @@ class GuestSpeakerBusiness {
     }
   }
 
+  async get() {
+    try {
+      const guestSpeaker = await GuestSpeaker.all()
+      return guestSpeaker
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
   async getByRg(rg) {
     try {
       const guestSpeaker = await GuestSpeaker.findBy('rg', rg)

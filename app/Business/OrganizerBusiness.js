@@ -41,6 +41,15 @@ class OrganizerBusiness {
     }
   }
 
+  async get() {
+    try {
+      const organizers = await Organizer.all()
+      return organizers
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
   async getByEventId(event_id) {
     try {
       const organizers = await Database
