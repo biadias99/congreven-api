@@ -2,10 +2,12 @@ const Event = use('App/Models/Event')
 const moment = use('moment')
 const Database = use ('Database')
 const OrganizerBusiness = use('App/Business/OrganizerBusiness')
+const SubscribeBusiness = use('App/Business/SubscribeBusiness')
 
 class EventBusiness {
   constructor() {
     this.organizerBusiness = new OrganizerBusiness();
+    this.subscribeBusiness = new SubscribeBusiness();
   }
 
   async create(data) {
@@ -74,7 +76,7 @@ class EventBusiness {
     }
   }
 
-  async getById(id) {
+  async getCompleteById(id) {
     try {
       const event = await Event.findBy('id', id)
       const organizers = await this.organizerBusiness.getByEventId(id)
@@ -84,6 +86,25 @@ class EventBusiness {
       }
 
       return eventWithOrganizers
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  async getByCpfOwner(cpf_owner) {
+    try {
+      const events = await Event.query().where('cpf_owner', cpf_owner).fetch()
+      return events
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
+  async getByCpfUser(cpf_user) {
+    try {
+      const subscribe = await this.subscribeBusiness.getByCpfUser(cpf_user)
+//continuar aqui
+      return subscribe
     } catch (error) {
       throw new Error(error)
     }

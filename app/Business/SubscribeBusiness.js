@@ -39,6 +39,18 @@ class SubscribeBusiness {
       throw new Error(error)
     }
   }
+
+  async getByCpfUser(cpf_user) {
+    try {
+      const events = await Database
+      .raw('select u.cpf cpf_user, e.name, e.start_date, e.end_date, e.description ' +
+      'from events e, subscribes s, users u where e.id = s.event_id and u.cpf = s.cpf_user and s.cpf_user = ?',
+      [cpf_user])
+      return events[0]
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
 }
 
 module.exports = SubscribeBusiness;
