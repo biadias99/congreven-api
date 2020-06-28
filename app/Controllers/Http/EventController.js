@@ -88,15 +88,15 @@ class EventController {
   async getCompleteById({ response, params }) {
     const { id } = params;
 
-    const event = await this.eventBusiness.getById(id);
+    const event = await this.eventBusiness.getCompleteById(id);
     try {
-        if (event) {
-          return event;
-        } else {
-            response.send({
-              message: 'Evento não encontrado na base de dados.'
-            });
-        }
+      if (event) {
+        return event;
+      } else {
+        response.send({
+          message: 'Evento não encontrado na base de dados.'
+        });
+      }
     } catch (error) {
       response.status(400).send({
         message: 'Erro ao buscar evento:' + error
@@ -109,13 +109,13 @@ class EventController {
 
     const events = await this.eventBusiness.getByCpfOwner(cpf);
     try {
-        if (events.rows[0]) {
-          return events;
-        } else {
-            response.send({
-              message: 'Você ainda não criou nenhum evento.'
-            });
-        }
+      if (events.rows[0]) {
+        return events;
+      } else {
+        response.send({
+          message: 'Você ainda não criou nenhum evento.'
+        });
+      }
     } catch (error) {
       response.status(400).send({
         message: 'Erro ao buscar eventos:' + error
@@ -128,13 +128,13 @@ class EventController {
 
     const events = await this.eventBusiness.getByCpfUser(cpf);
     try {
-        if (events) {
-          return events;
-        } else {
-            response.send({
-              message: 'Você ainda não favoritou nenhum evento.'
-            });
-        }
+      if (events) {
+        return events;
+      } else {
+        response.send({
+          message: 'Você ainda não favoritou nenhum evento.'
+        });
+      }
     } catch (error) {
       response.status(400).send({
         message: 'Erro ao buscar eventos:' + error
