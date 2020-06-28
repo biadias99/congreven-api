@@ -15,6 +15,16 @@ class SupportBusiness {
     }
   }
 
+  async createMany(data) {
+    try {
+      const support = await Support.createMany(data)
+
+      return support
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
   async getByPk(data) {
     try {
       const support = await Support

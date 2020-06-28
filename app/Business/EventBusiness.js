@@ -1,13 +1,14 @@
 const Event = use('App/Models/Event')
 const moment = use('moment')
-const Database = use ('Database')
 const OrganizerBusiness = use('App/Business/OrganizerBusiness')
 const SubscribeBusiness = use('App/Business/SubscribeBusiness')
+const SupportBusiness = use('App/Business/SupportBusiness')
 
 class EventBusiness {
   constructor() {
     this.organizerBusiness = new OrganizerBusiness();
     this.subscribeBusiness = new SubscribeBusiness();
+    this.supportBusiness = new SupportBusiness();
   }
 
   async create(data) {
@@ -21,6 +22,21 @@ class EventBusiness {
         cpf_owner: data.cpf_owner,
         owner_description: data.owner_description
       })
+
+
+      if(data.organizers[0]) {
+        let organizers = [];
+
+        for await(let i of data.organizers) {
+          organizers.push({
+            event_id: event.id,
+            cnpj_organizer: i
+          })
+        }
+
+        await this.supportBusiness.createMany(organizers)
+      }
+
 
       return event
     } catch (error) {
