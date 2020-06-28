@@ -13,8 +13,7 @@ class Event {
       start_date: 'required',
       end_date: 'required',
       description: 'required|min:10|max:100',
-      cpf_owner: 'required|cpfValid|exists:users,cpf',
-      organizers: 'required'
+      cpf_owner: 'required|cpfValid|exists:users,cpf'
     }
   }
 
@@ -32,8 +31,7 @@ class Event {
       "description.min": "A descrição precisa ter no mínimo 10 caracteres",
       "description.max": "A descrição precisa ter no máximo 100 caracteres",
       "cpf_owner.required": "O cpf é um campo obrigatório",
-      "cpf_owner.exists": "O cpf do criador não existe no banco de dados",
-      "organizers.required": "Os CNPJs dos organizadores são obrigatórios"
+      "cpf_owner.exists": "O cpf do criador não existe no banco de dados"
     }
   }
 

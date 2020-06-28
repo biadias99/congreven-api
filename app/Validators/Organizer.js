@@ -10,7 +10,8 @@ class Organizer {
       // validation rules
       name: 'required|min:3|max:80',
       cnpj: 'required|unique:organizers|cnpjValid',
-      description: 'required|min:10|max:100'
+      description: 'required|min:10|max:100',
+      cpf_owner: 'required|cpfValid|exists:users,cpf'
     }
   }
 
@@ -24,6 +25,8 @@ class Organizer {
       "description.max": "A descrição precisa ter no máximo 100 caracteres",
       "cnpj.required": "O CNPJ é um campo obrigatório",
       "cnpj.unique": "CNPJ já cadastrado",
+      "cpf_owner.required": "O cpf do criador é um campo obrigatório",
+      "cpf_owner.exists": "O cpf do criador não existe no banco de dados"
     }
   }
 

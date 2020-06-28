@@ -6,7 +6,8 @@ class OrganizerBusiness {
       const organizer = await Organizer.create({
         name: data.name,
         cnpj: data.cnpj,
-        description: data.description
+        description: data.description,
+        cpf_owner: data.cpf_owner
       })
 
       return organizer
