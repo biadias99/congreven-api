@@ -75,15 +75,15 @@ class ActivityController {
   async getById({ response, params }) {
     const { id } = params;
 
-    const activity = await this.activityBusiness.getById(id);
+    const activity = await this.activityBusiness.getCompleteById(id);
     try {
-        if (activity) {
-          return activity;
-        } else {
-            response.send({
-              message: 'Atividade não encontrada na base de dados.'
-            });
-        }
+      if (activity) {
+        return activity;
+      } else {
+        response.send({
+          message: 'Atividade não encontrada na base de dados.'
+        });
+      }
     } catch (error) {
       response.status(400).send({
         message: 'Erro ao buscar atividade:' + error
@@ -97,13 +97,13 @@ class ActivityController {
     const activity = await this.activityBusiness.getByEventId(id);
 
     try {
-        if (activity.rows[0]) {
-          return activity;
-        } else {
-            response.send({
-              message: 'Não existe nenhuma atividade vinculada a este evento.'
-            });
-        }
+      if (activity.rows[0]) {
+        return activity;
+      } else {
+        response.send({
+          message: 'Não existe nenhuma atividade vinculada a este evento.'
+        });
+      }
     } catch (error) {
       response.status(400).send({
         message: 'Erro ao buscar atividade:' + error

@@ -23,7 +23,7 @@ class ActivityBusiness {
     }
   }
 
-  async getById(id) {
+  async getCompleteById(id) {
     try {
       const activity = await Activity.findBy('id', id)
       const guestSpeakers = await this.guestSpeakerBusiness.getByActivityId(id)
@@ -37,21 +37,30 @@ class ActivityBusiness {
     }
   }
 
+  async getById(id) {
+    try {
+      const activity = await Activity.findBy('id', id)
+      return activity
+    } catch (error) {
+      throw new Error(error)
+    }
+  }
+
   async update(id, data, activity) {
     try {
-        activity.merge({
-          name: data.name,
-          period: data.period,
-          date_activity: moment(data.date_activity, 'YYYY-MM-DD').toDate(),
-          start_hour: data.start_hour,
-          end_hour: data.end_hour,
-        })
+      activity.merge({
+        name: data.name,
+        period: data.period,
+        date_activity: moment(data.date_activity, 'YYYY-MM-DD').toDate(),
+        start_hour: data.start_hour,
+        end_hour: data.end_hour,
+      })
 
-        await activity.save()
+      await activity.save()
 
-        const newActivity = await Activity.findBy('id', id)
+      const newActivity = await Activity.findBy('id', id)
 
-        return newActivity
+      return newActivity
     } catch (error) {
       throw new Error(error)
     }
