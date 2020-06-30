@@ -38,17 +38,17 @@ class GuestSpeakerBusiness {
 
   async update(rg, data, guestSpeaker) {
     try {
-        guestSpeaker.merge({
-          name: data.name,
-          scholarity: data.scholarity,
-          bdate: moment(data.bdate, 'YYYY-MM-DD').toDate()
-        })
+      guestSpeaker.merge({
+        name: data.name,
+        scholarity: data.scholarity,
+        bdate: moment(data.bdate, 'YYYY-MM-DD').toDate()
+      })
 
-        await guestSpeaker.save()
+      await guestSpeaker.save()
 
-        const newGuestSpeaker = await GuestSpeaker.findBy('rg', rg)
+      const newGuestSpeaker = await GuestSpeaker.findBy('rg', rg)
 
-        return newGuestSpeaker
+      return newGuestSpeaker
     } catch (error) {
       throw new Error(error)
     }
@@ -57,8 +57,8 @@ class GuestSpeakerBusiness {
   async getByActivityId(activity_id) {
     try {
       const guestSpeakers = await Database
-      .raw('select gs.rg, gs.name from guest_speakers gs, speaks s where gs.rg = s.rg_guest_speaker and s.activity_id = ?',
-      [activity_id])
+        .raw('select gs.rg, gs.name, gs.bdate, gs.scholarity from guest_speakers gs, speaks s where gs.rg = s.rg_guest_speaker and s.activity_id = ?',
+          [activity_id])
       return guestSpeakers
     } catch (error) {
       throw new Error(error)
