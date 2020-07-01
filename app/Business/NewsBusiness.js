@@ -20,11 +20,11 @@ class NewsBusiness {
   async getByPk(data) {
     try {
       const news = await News
-                          .query()
-                          .where('name', data.name)
-                          .where('ndate', moment(data.ndate, 'YYYY-MM-DD').toDate())
-                          .where('event_id', data.event_id)
-                          .first()
+        .query()
+        .where('name', data.name)
+        .where('ndate', moment(data.ndate, 'YYYY-MM-DD').toDate())
+        .where('event_id', data.event_id)
+        .first()
 
       return news
     } catch (error) {
@@ -58,7 +58,7 @@ class NewsBusiness {
   async delete(news) {
     try {
       await Database
-          .raw('delete from news where name = ? and ndate = ? and event_id = ?',
+        .raw('delete from news where name = ? and ndate = ? and event_id = ?',
           [news.name, moment(news.ndate, 'YYYY-MM-DD').toDate(), news.event_id])
       return
     } catch (error) {
@@ -68,7 +68,7 @@ class NewsBusiness {
 
   async getByEventId(event_id) {
     try {
-      const news = await News.query().where('event_id', event_id).fetch()
+      const news = await News.query().where('event_id', event_id).orderBy('ndate', 'asc').fetch()
       return news
     } catch (error) {
       throw new Error(error)

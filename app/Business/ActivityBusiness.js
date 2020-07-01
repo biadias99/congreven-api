@@ -77,7 +77,7 @@ class ActivityBusiness {
 
   async getByEventId(event_id) {
     try {
-      const activity = await Activity.query().where('event_id', event_id).fetch()
+      const activity = await Activity.query().where('event_id', event_id).orderBy('date_activity', 'asc').orderBy('start_hour', 'asc').fetch()
       return activity
     } catch (error) {
       throw new Error(error)
