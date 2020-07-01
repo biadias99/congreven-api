@@ -14,7 +14,7 @@ class SubscribeController {
       await this.subscribeBusiness.create(data)
 
       response.send({
-        message: 'Vinculado usuário com evento com sucesso'
+        message: 'Parabéns, você está participando do evento!'
       })
     } catch (error) {
       response.status(400).send({
@@ -33,7 +33,7 @@ class SubscribeController {
         await this.subscribeBusiness.delete(subscribe)
 
         response.send({
-          message: 'Vinculação excluída com sucesso.'
+          message: 'Você não está mais participando do evento.'
         })
       } catch (error) {
         response.status(400).send({
