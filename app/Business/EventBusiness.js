@@ -118,7 +118,6 @@ class EventBusiness {
   async getByCpfUser(cpf_user) {
     try {
       const subscribe = await this.subscribeBusiness.getByCpfUser(cpf_user)
-      //continuar aqui
       return subscribe
     } catch (error) {
       throw new Error(error)
