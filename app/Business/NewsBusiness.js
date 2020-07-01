@@ -68,7 +68,7 @@ class NewsBusiness {
 
   async getByEventId(event_id) {
     try {
-      const news = await News.query().where('event_id', event_id).orderBy('ndate', 'asc').fetch()
+      const news = await News.query().where('event_id', event_id).orderBy('ndate', 'desc').fetch()
       return news
     } catch (error) {
       throw new Error(error)
