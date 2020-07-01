@@ -16,18 +16,17 @@ class EventBusiness {
       const event = await Event.create({
         name: data.name,
         address: data.address,
-        start_date: moment(data.start_date, 'YYYY-MM-DD').toDate(),
-        end_date: moment(data.end_date, 'YYYY-MM-DD').toDate(),
+        start_date: moment(data.start_date, 'YYYY-MM-DD hh:mm').toDate(),
+        end_date: moment(data.end_date, 'YYYY-MM-DD hh:mm').toDate(),
         description: data.description,
         cpf_owner: data.cpf_owner,
         owner_description: data.owner_description
       })
 
-
-      if(data.organizers[0]) {
+      if (data.organizers[0]) {
         let organizers = [];
 
-        for await(let i of data.organizers) {
+        for await (let i of data.organizers) {
           organizers.push({
             event_id: event.id,
             cnpj_organizer: i
@@ -55,20 +54,20 @@ class EventBusiness {
 
   async update(id, data, event) {
     try {
-        event.merge({
-          name: data.name,
-          address: data.address,
-          start_date: moment(data.start_date, 'YYYY-MM-DD').toDate(),
-          end_date: moment(data.end_date, 'YYYY-MM-DD').toDate(),
-          description: data.description,
-          owner_description: data.owner_description
-        })
+      event.merge({
+        name: data.name,
+        address: data.address,
+        start_date: moment(data.start_date, 'YYYY-MM-DD hh:mm').toDate(),
+        end_date: moment(data.end_date, 'YYYY-MM-DD hh:mm').toDate(),
+        description: data.description,
+        owner_description: data.owner_description
+      })
 
-        await event.save()
+      await event.save()
 
-        const newEvent = await Event.findBy('id', id)
+      const newEvent = await Event.findBy('id', id)
 
-        return newEvent
+      return newEvent
     } catch (error) {
       throw new Error(error)
     }
@@ -119,7 +118,7 @@ class EventBusiness {
   async getByCpfUser(cpf_user) {
     try {
       const subscribe = await this.subscribeBusiness.getByCpfUser(cpf_user)
-//continuar aqui
+      //continuar aqui
       return subscribe
     } catch (error) {
       throw new Error(error)
